@@ -1,0 +1,23 @@
+@import url("../../vendor/fonts.css");
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.page__content {
+  /* display: flex;
+  flex-direction: column; */
+  /* max-width: 1440px; */
+  margin: 0 auto;
+}
