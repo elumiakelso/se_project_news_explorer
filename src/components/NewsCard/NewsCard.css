@@ -70,6 +70,28 @@
   line-height: 20px;
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.4px;
   color: #B6BCBF;
   margin: 18px 0 0;
+}
+
+@media screen and (max-width: 768px) {
+
+  .news-card__date {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .news-card__title {
+    font-size: 22px;
+    line-height: 24px;
+    height: auto;
+  }
+
+  .news-card__description {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+
 }

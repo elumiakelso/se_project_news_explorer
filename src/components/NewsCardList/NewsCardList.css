@@ -30,3 +30,16 @@
   grid-template-columns: repeat(auto-fit, 400px);
   gap: 16px;
 }
+
+@media screen and (max-width: 768px) {
+
+  .news-card-list__container {
+    padding: 0 40px;
+  }
+
+  .news-card-list__list {
+    grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+    gap: 8px;
+  }
+
+}
