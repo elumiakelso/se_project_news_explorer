@@ -1,6 +1,4 @@
-import { APIkey } from "./constants";
-
-import newsApiBaseUrl from "./constants";
+import { APIkey, newsApiBaseUrl } from "./constants";
 
 export async function fetchNewsArticles(query) {
   const url = `${newsApiBaseUrl}?q=${encodeURIComponent(query)}&apiKey=${APIkey}&pageSize=100&language=en`;

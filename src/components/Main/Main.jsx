@@ -1,11 +1,11 @@
-import './Main.css';
-import About from '../About/About';
-import NewsCardList from '../NewsCardList/NewsCardList';
+import "./Main.css";
+import About from "../About/About";
+import NewsCardList from "../NewsCardList/NewsCardList";
 
-function Main() {
+function Main({ articles, visibleCount, onShowMoreArticles }) {
   return (
     <main className="main">
-      <NewsCardList />
+      <NewsCardList articles={articles} visibleCount={visibleCount} onShowMoreArticles={onShowMoreArticles} />
       <About />
     </main>
   );
