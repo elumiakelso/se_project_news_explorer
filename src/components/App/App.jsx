@@ -39,7 +39,6 @@ function App() {
   };
 
   const onShowMoreArticles = () => {
-    // setVisibleCount(prev => prev + 3);
     setVisibleCount(visibleCount + 3);
   };
 
