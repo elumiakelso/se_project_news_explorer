@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
+import SavedNews from "../SavedNews/SavedNews.jsx";
 import Footer from "../Footer/Footer.jsx";
 
 import { fetchNewsArticles } from "../../utils/newsApi.js";
@@ -13,6 +15,7 @@ function App() {
   const [hasSearched, setHasSearched] = useState(false); // No search results yet
   const [isLoading, setIsLoading] = useState(false); // Loading state
   const [error, setError] = useState(null); // Error message
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleSearch = (query) => {
     setHasSearched(true);
@@ -43,20 +46,30 @@ function App() {
   };
 
   return (
-    <div className="page">
-      <div className="page__content">
-        <Header onSearch={handleSearch} />
-        <Main
-          articles={articles}
-          visibleCount={visibleCount}
-          onShowMoreArticles={onShowMoreArticles}
-          hasSearched={hasSearched}
-          isLoading={isLoading}
-          error={error}
-        />
-        <Footer />
+    <BrowserRouter>
+      <div className="page">
+        <div className="page__content">
+          <Header onSearch={handleSearch} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  articles={articles}
+                  visibleCount={visibleCount}
+                  onShowMoreArticles={onShowMoreArticles}
+                  hasSearched={hasSearched}
+                  isLoading={isLoading}
+                  error={error}
+                />
+              }
+            />
+            <Route path="/saved-news" element={<SavedNews />} />
+          </Routes>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 

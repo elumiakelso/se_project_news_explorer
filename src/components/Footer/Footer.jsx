@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Footer.css";
 import github from "../../assets/github.svg";
 import facebook from "../../assets/fb.svg";
@@ -9,7 +10,7 @@ function Footer() {
       <div className="footer__content">
         <ul className="footer__text-links">
           <li className="footer__item">
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li className="footer__item">
             <a href="https://tripleten.com/">TripleTen</a>
