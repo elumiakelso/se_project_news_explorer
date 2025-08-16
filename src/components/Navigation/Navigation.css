@@ -61,11 +61,57 @@
   font-weight: 500;
   color: #fff;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .nav__button:hover,
 .nav__button:focus-visible {
   background-color: #fff;
   color: #1A1B22;
-  transition: linear 0.2s;
+}
+
+.nav__button-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  transition: color 0.2s ease-in-out;
+  margin-left: 15px;
+  vertical-align: middle;
+}
+
+.nav__button:hover .nav__button-icon,
+.nav__button:focus-visible .nav__button-icon {
+  color: #1A1B22;
+}
+
+.nav--saved-news .nav__item,
+.nav--saved-news .nav__logo-link {
+  color: #1A1B22;
+}
+
+.nav--saved-news .nav__button {
+  border: 1px solid #1A1B22;
+  color: #1A1B22;
+}
+
+.nav--saved-news .nav__button-icon {
+  color: #1A1B22;
+}
+
+.nav--saved-news .nav__item:hover,
+.nav--saved-news .nav__item:focus-visible {
+  border-bottom: 3px solid #1A1B22;
+}
+
+.nav--saved-news .nav__button:hover,
+.nav--saved-news .nav__button:focus-visible {
+  background-color: #1A1B22;
+  border-color: #1A1B22;
+  color: #fff;
+}
+
+.nav--saved-news .nav__button:hover .nav__button-icon,
+.nav--saved-news .nav__button:focus-visible .nav__button-icon {
+  color: #fff;
 }

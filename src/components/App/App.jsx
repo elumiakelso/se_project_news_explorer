@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import SavedNews from "../SavedNews/SavedNews.jsx";
 import Footer from "../Footer/Footer.jsx";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 import { fetchNewsArticles } from "../../utils/newsApi.js";
 
@@ -16,6 +17,17 @@ function App() {
   const [isLoading, setIsLoading] = useState(false); // Loading state
   const [error, setError] = useState(null); // Error message
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState(null);
+
+  const handleSignIn = () => {
+    setIsLoggedIn(true);
+    setUserName(userName.data.name);
+  };
+
+  const handleSignOut = () => {
+    setIsLoggedIn(false);
+    setUserName(null);
+  };
 
   const handleSearch = (query) => {
     setHasSearched(true);
@@ -49,7 +61,13 @@ function App() {
     <BrowserRouter>
       <div className="page">
         <div className="page__content">
-          <Header onSearch={handleSearch} />
+          <Header
+            onSearch={handleSearch}
+            isLoggedIn={isLoggedIn}
+            userName={userName}
+            onSignIn={handleSignIn}
+            onSignOut={handleSignOut}
+          />
           <Routes>
             <Route
               path="/"
@@ -64,7 +82,18 @@ function App() {
                 />
               }
             />
-            <Route path="/saved-news" element={<SavedNews />} />
+            <Route
+              path="/saved-news"
+              element={
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <SavedNews
+                    isLoggedIn={true}
+                    userName={userName}
+                    onSignOut={handleSignOut}
+                  />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
           <Footer />
         </div>

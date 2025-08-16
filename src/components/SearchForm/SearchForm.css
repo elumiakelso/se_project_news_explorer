@@ -55,7 +55,7 @@
   padding: 0 16px;
   border: none;
   background-color: #2F71E5;
-  color: white;
+  color: #fff;
   border-radius: 100px;
   cursor: pointer;
   z-index: 1;
@@ -63,4 +63,9 @@
 
 .search-form__button:hover {
   background-color: #347EFF;
+}
+
+.search-form__button:active {
+  background-color: #2A65CC;
+  color: #fff;
 }
