@@ -19,9 +19,44 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState(null);
 
+  const mockSavedArticles = [
+    {
+      title: "Test Article 1",
+      image: "https://via.placeholder.com/400x272",
+      description: "This is a test description.",
+      source: "Test Source",
+      url: "https://example.com",
+      publishedAt: "2025-08-16T12:00:00Z",
+    },
+    {
+      title: "Test Article 2",
+      image: "https://via.placeholder.com/400x272",
+      description: "Another test description.",
+      source: "Another Source",
+      url: "https://example.com/2",
+      publishedAt: "2025-08-15T10:00:00Z",
+    },
+    {
+      title: "Test Article 1",
+      image: "https://via.placeholder.com/400x272",
+      description: "This is a test description.",
+      source: "Test Source",
+      url: "https://example.com",
+      publishedAt: "2025-08-16T12:00:00Z",
+    },
+    {
+      title: "Test Article 2",
+      image: "https://via.placeholder.com/400x272",
+      description: "Another test description.",
+      source: "Another Source",
+      url: "https://example.com/2",
+      publishedAt: "2025-08-15T10:00:00Z",
+    },
+  ];
+
   const handleSignIn = () => {
     setIsLoggedIn(true);
-    setUserName(userName.data.name);
+    setUserName("User"); // Replace with actual user name from login response
   };
 
   const handleSignOut = () => {
@@ -61,25 +96,27 @@ function App() {
     <BrowserRouter>
       <div className="page">
         <div className="page__content">
-          <Header
-            onSearch={handleSearch}
-            isLoggedIn={isLoggedIn}
-            userName={userName}
-            onSignIn={handleSignIn}
-            onSignOut={handleSignOut}
-          />
           <Routes>
             <Route
               path="/"
               element={
-                <Main
-                  articles={articles}
-                  visibleCount={visibleCount}
-                  onShowMoreArticles={onShowMoreArticles}
-                  hasSearched={hasSearched}
-                  isLoading={isLoading}
-                  error={error}
-                />
+                <>
+                  <Header
+                    onSearch={handleSearch}
+                    isLoggedIn={isLoggedIn}
+                    userName={userName}
+                    onSignIn={handleSignIn}
+                    onSignOut={handleSignOut}
+                  />
+                  <Main
+                    articles={articles}
+                    visibleCount={visibleCount}
+                    onShowMoreArticles={onShowMoreArticles}
+                    hasSearched={hasSearched}
+                    isLoading={isLoading}
+                    error={error}
+                  />
+                </>
               }
             />
             <Route
@@ -90,6 +127,11 @@ function App() {
                     isLoggedIn={true}
                     userName={userName}
                     onSignOut={handleSignOut}
+                    articles={mockSavedArticles}
+                    // visibleCount={visibleCount}
+                    // onShowMoreArticles={onShowMoreArticles}
+                    isLoading={isLoading}
+                    error={error}
                   />
                 </ProtectedRoute>
               }

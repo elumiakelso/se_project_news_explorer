@@ -33,6 +33,22 @@
   display: block;
 }
 
+.news-card__keyword-label {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #1A1B22;
+  margin: 0;
+  padding: 8px 22px;
+  background-color: #fff;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 1;
+  border-radius: 10px;
+}
+
 .news-card__save-button {
   background: #fff url("../../assets/save-button.svg") center no-repeat;
   border: none;
@@ -51,6 +67,27 @@
 .news-card__save-button:focus-visible {
   background: #fff url("../../assets/save-button-hover.svg") center no-repeat;
   background-size: 14px 19px;
+  opacity: 100%;
+}
+
+.news-card__remove-button {
+  background: #fff url("../../assets/delete-icon.svg") center no-repeat;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: 18px 20px;
+  border-radius: 8px;
+}
+
+.news-card__remove-button:hover,
+.news-card__remove-button:focus-visible {
+  background: #fff url("../../assets/delete-icon-hover.svg") center no-repeat;
+  background-size: 18px 20px;
   opacity: 100%;
 }
 
@@ -73,6 +110,11 @@
 
 .news-card__save-button:hover + .news-card__tooltip,
 .news-card__save-button:focus-visible + .news-card__tooltip {
+  display: block;
+}
+
+.news-card__remove-button:hover + .news-card__tooltip,
+.news-card__remove-button:focus-visible + .news-card__tooltip {
   display: block;
 }
 
