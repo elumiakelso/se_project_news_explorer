@@ -6,6 +6,7 @@ import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import SavedNews from "../SavedNews/SavedNews.jsx";
 import Footer from "../Footer/Footer.jsx";
+import LoginModal from "../LoginModal/LoginModal.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 import { fetchNewsArticles } from "../../utils/newsApi.js";
@@ -18,6 +19,7 @@ function App() {
   const [error, setError] = useState(null); // Error message
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState(null);
+  const [activeModal, setActiveModal] = useState(null);
 
   const mockSavedArticles = [
     {
@@ -54,9 +56,33 @@ function App() {
     },
   ];
 
+  const handleRegisterClick = () => {
+    setActiveModal("register");
+  };
+
+  const handleLoginClick = () => {
+    setActiveModal("login");
+  };
+
   const handleSignIn = () => {
     setIsLoggedIn(true);
     setUserName("User"); // Replace with actual user name from login response
+  };
+
+  const onClose = () => {
+    setActiveModal("");
+  };
+
+  const handleLoginModalSubmit = ({ email, password }) => {
+    Promise.resolve({ userName: email })
+    .then((res) => {
+      setIsLoggedIn(true);
+      setUserName(res.userName);
+      onClose();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
   };
 
   const handleSignOut = () => {
@@ -107,6 +133,8 @@ function App() {
                     userName={userName}
                     onSignIn={handleSignIn}
                     onSignOut={handleSignOut}
+                    onLoginClick={handleLoginClick}
+                    onRegisterClick={handleRegisterClick}
                   />
                   <Main
                     articles={articles}
@@ -127,6 +155,8 @@ function App() {
                     isLoggedIn={true}
                     userName={userName}
                     onSignOut={handleSignOut}
+                    onLoginClick={handleLoginClick}
+                    onRegisterClick={handleRegisterClick}
                     articles={mockSavedArticles}
                     // visibleCount={visibleCount}
                     // onShowMoreArticles={onShowMoreArticles}
@@ -139,6 +169,12 @@ function App() {
           </Routes>
           <Footer />
         </div>
+        <LoginModal
+            isOpen={activeModal === "login"}
+            onClose={onClose}
+            onLoginModalSubmit={handleLoginModalSubmit}
+            onAltAction={handleRegisterClick}
+          />
       </div>
     </BrowserRouter>
   );

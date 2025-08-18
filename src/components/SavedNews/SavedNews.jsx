@@ -12,6 +12,8 @@ function SavedNews({
   userName,
   onSignIn,
   onSignOut,
+  onLoginClick,
+  onRegisterClick
 }) {
   return (
     <>
@@ -20,6 +22,8 @@ function SavedNews({
         userName={userName}
         onSignIn={onSignIn}
         onSignOut={onSignOut}
+        onLoginClick={onLoginClick}
+        onRegisterClick={onRegisterClick}
         isSavedNews={true}
       />
       <header className="saved-news__header">

@@ -4,7 +4,7 @@ import "./Navigation.css";
 // import logoutIconWhite from "../../assets/logout-icon-white.svg";
 // import logoutIconDark from "../../assets/logout-icon-black.svg";
 
-function Navigation({ isLoggedIn, userName, onSignIn, onSignOut, isSavedNews }) {
+function Navigation({ isLoggedIn, userName, onSignIn, onSignOut, onLoginClick, onRegisterClick, isSavedNews }) {
   return (
     <nav className={`nav${isSavedNews ? " nav--saved-news" : ""}`}>
       <div className="nav__container">
@@ -39,7 +39,7 @@ function Navigation({ isLoggedIn, userName, onSignIn, onSignOut, isSavedNews }) 
               </button>
             </>
           ) : (
-            <button className="nav__button" onClick={onSignIn}>
+            <button className="nav__button" onClick={onLoginClick}>
               Sign In
             </button>
           )}

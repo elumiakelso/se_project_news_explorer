@@ -4,7 +4,7 @@ import "./Header.css";
 import Navigation from "../Navigation/Navigation.jsx";
 import SearchForm from "../SearchForm/SearchForm.jsx";
 
-function Header({ onSearch, isLoggedIn, userName, onSignIn, onSignOut }) {
+function Header({ onSearch, isLoggedIn, userName, onSignIn, onSignOut, onLoginClick, onRegisterClick }) {
   const location = useLocation();
 
   return (
@@ -14,6 +14,8 @@ function Header({ onSearch, isLoggedIn, userName, onSignIn, onSignOut }) {
         userName={userName}
         onSignIn={onSignIn}
         onSignOut={onSignOut}
+        onLoginClick={onLoginClick}
+        onRegisterClick={onRegisterClick}
       />
         <div className="header__content">
           <div className="header__container">
