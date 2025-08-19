@@ -7,6 +7,7 @@ import Main from "../Main/Main.jsx";
 import SavedNews from "../SavedNews/SavedNews.jsx";
 import Footer from "../Footer/Footer.jsx";
 import LoginModal from "../LoginModal/LoginModal.jsx";
+import RegisterModal from "./../RegisterModal/RegisterModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 import { fetchNewsArticles } from "../../utils/newsApi.js";
@@ -74,16 +75,28 @@ function App() {
   };
 
   const handleLoginModalSubmit = ({ email, password }) => {
-    Promise.resolve({ userName: email })
+    Promise.resolve({ userName: "userName" })
+      .then((res) => {
+        setIsLoggedIn(true);
+        setUserName(res.userName);
+        onClose();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const handleRegisterModalSubmit = ({ email, password }) => {
+  // Simulate async register logic
+  Promise.resolve({ userName: email })
     .then((res) => {
-      setIsLoggedIn(true);
-      setUserName(res.userName);
+      // Optionally set user state or show a success message
       onClose();
     })
     .catch((err) => {
       console.error(err);
     });
-  };
+};
 
   const handleSignOut = () => {
     setIsLoggedIn(false);
@@ -170,11 +183,17 @@ function App() {
           <Footer />
         </div>
         <LoginModal
-            isOpen={activeModal === "login"}
-            onClose={onClose}
-            onLoginModalSubmit={handleLoginModalSubmit}
-            onAltAction={handleRegisterClick}
-          />
+          isOpen={activeModal === "login"}
+          onClose={onClose}
+          onLoginModalSubmit={handleLoginModalSubmit}
+          onAltAction={handleRegisterClick}
+        />
+        <RegisterModal
+          isOpen={activeModal === "register"}
+          onClose={onClose}
+          onRegisterModalSubmit={handleRegisterModalSubmit}
+          onAltAction={handleLoginClick}
+        />
       </div>
     </BrowserRouter>
   );

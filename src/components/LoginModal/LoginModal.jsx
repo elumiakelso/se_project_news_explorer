@@ -57,7 +57,7 @@ function LoginModal({ isOpen, onClose, onLoginModalSubmit, onAltAction }) {
           name="email"
           value={email}
           onChange={handleEmailChange}
-          placeholder="Email"
+          placeholder="Enter email"
           required
         />
       </label>
@@ -69,7 +69,7 @@ function LoginModal({ isOpen, onClose, onLoginModalSubmit, onAltAction }) {
           name="password"
           value={password}
           onChange={handlePasswordChange}
-          placeholder="Password"
+          placeholder="Enter password"
           required
         />
       </label>
