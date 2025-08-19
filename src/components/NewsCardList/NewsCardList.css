@@ -98,7 +98,7 @@
 @media screen and (max-width: 768px) {
 
   .news-card-list__container {
-    padding: 0 40px;
+    padding: 0 40px 40px;
   }
 
   .news-card-list__list {

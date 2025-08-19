@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.css";
@@ -6,8 +6,15 @@ import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import SavedNews from "../SavedNews/SavedNews.jsx";
 import Footer from "../Footer/Footer.jsx";
+import {
+  getItems,
+  saveArticle,
+  deleteArticle,
+  checkResponse,
+} from "../../utils/api.js";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import RegisterModal from "./../RegisterModal/RegisterModal";
+import * as auth from "../../utils/auth.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 import { fetchNewsArticles } from "../../utils/newsApi.js";
@@ -21,6 +28,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState(null);
   const [activeModal, setActiveModal] = useState(null);
+  const [savedArticles, setSavedArticles] = useState([]);
+  // const [token, setToken] = useState(null);
 
   const mockSavedArticles = [
     {
@@ -67,18 +76,27 @@ function App() {
 
   const handleSignIn = () => {
     setIsLoggedIn(true);
-    setUserName("User"); // Replace with actual user name from login response
+    setUserName(res.userName);
   };
 
   const onClose = () => {
     setActiveModal("");
   };
 
-  const handleLoginModalSubmit = ({ email, password }) => {
-    Promise.resolve({ userName: "userName" })
+  const handleLoginModalSubmit = (email, password) => {
+    auth
+      .authorize(email, password)
       .then((res) => {
-        setIsLoggedIn(true);
-        setUserName(res.userName);
+        if (res.token) {
+          localStorage.setItem("jwt", res.token);
+          setIsLoggedIn(true);
+          return auth.checkToken(res.token);
+        }
+        throw new Error("No token received");
+      })
+      .then((userData) => {
+        // setCurrentUser(userData);
+        setUserName(userData.data.name);
         onClose();
       })
       .catch((err) => {
@@ -86,19 +104,20 @@ function App() {
       });
   };
 
-  const handleRegisterModalSubmit = ({ email, password }) => {
-  // Simulate async register logic
-  Promise.resolve({ userName: email })
-    .then((res) => {
-      // Optionally set user state or show a success message
-      onClose();
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-};
+  const handleRegisterModalSubmit = (email, password, userName) => {
+    auth
+      .register(email, password, userName)
+      .then((res) => {
+        // Optionally set user state or show a success message
+        onClose();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   const handleSignOut = () => {
+    localStorage.removeItem("jwt");
     setIsLoggedIn(false);
     setUserName(null);
   };
@@ -130,6 +149,23 @@ function App() {
   const onShowMoreArticles = () => {
     setVisibleCount(visibleCount + 3);
   };
+
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+
+    if (jwt) {
+      auth
+        .checkToken(jwt)
+        .then((userData) => {
+          setIsLoggedIn(true);
+          // setCurrentUser(userData);
+          setUserName(userData.data.name);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, []);
 
   return (
     <BrowserRouter>
