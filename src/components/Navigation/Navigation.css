@@ -12,7 +12,7 @@
   font-family: 'Roboto Slab', 'Times New Roman', Times, serif;
   font-weight: 700;
   font-size: 20px;
-  line-height: 4px;
+  line-height: 24px;
   color: #fff;
   text-decoration: none;
   margin: 0;
@@ -114,4 +114,33 @@
 .nav--saved-news .nav__button:hover .nav__button-icon,
 .nav--saved-news .nav__button:focus-visible .nav__button-icon {
   color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+
+  .nav__container {
+    max-width: 768px;
+    height: 66px;
+    padding: 0 40px;
+  }
+
+  .nav__links {
+    gap: 16px;
+  }
+
+  .nav__item {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .nav__button {
+    font-size: 16px;
+    height: 40px;
+    padding: 8px 12px;
+  }
+
+  .nav__button-icon {
+    margin-left: 13px
+  }
+
 }

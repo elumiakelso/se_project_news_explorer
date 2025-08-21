@@ -30,7 +30,7 @@ function SavedNews({
       <header className="saved-news__header">
         <div className="saved-news__header-container">
           <div className="saved-news__content">
-            <h2 className="saved-news__title">Saved articles</h2>
+            <h1 className="saved-news__title">Saved articles</h1>
             <p className="saved-news__subtitle">
               Elise, you have 5 saved articles
             </p>

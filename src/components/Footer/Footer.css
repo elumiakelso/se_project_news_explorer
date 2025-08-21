@@ -64,3 +64,21 @@
   width: 24px;
   height: 24px;
 }
+
+@media screen and (max-width: 768px) {
+
+  .footer {
+    max-width: 768px;
+    height: 64px;
+    padding: 0 40px;
+  }
+
+  .footer__text-links {
+    margin: 0;
+  }
+
+  .footer__social-links {
+    margin: 0;
+  }
+
+}

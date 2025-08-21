@@ -101,9 +101,24 @@
     padding: 0 40px 40px;
   }
 
+  .news-card-list__container--saved-news {
+    padding-bottom: 0;
+  }
+
+  .news-card-list__title {
+    font-size: 30px;
+    line-height: 34px;
+    padding: 40px 0 0;
+  }
+
   .news-card-list__list {
+    padding: 32px 0;
     grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
     gap: 8px;
+  }
+
+  .news-card-list__button {
+    max-width: 240px;
   }
 
 }

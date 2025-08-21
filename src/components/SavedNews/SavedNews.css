@@ -57,3 +57,27 @@
 .saved-news__news-card-list {
   padding-bottom: 40px;
 }
+
+@media screen and (max-width: 768px) {
+
+  .saved-news__header-container {
+    max-width: 768px;
+    padding: 0 40px;
+  }
+
+  .saved-news__content {
+    max-width: 386px;
+    padding: 24px 0 32px;
+  }
+
+  .saved-news__title {
+    font-size: 14px;
+  }
+
+  .saved-news__subtitle {
+    font-size: 30px;
+    line-height: 34px;
+    padding: 16px 0 0;
+  }
+
+}

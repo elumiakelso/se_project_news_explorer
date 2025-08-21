@@ -69,3 +69,16 @@
   background-color: #2A65CC;
   color: #fff;
 }
+
+@media screen and (max-width: 768px) {
+
+  .search-form {
+    height: 56px;
+    margin: 48px auto 0;
+  }
+
+  .search-form__button {
+    height: 56px
+  }
+
+}
