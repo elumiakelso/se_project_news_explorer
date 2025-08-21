@@ -31,40 +31,40 @@ function App() {
   const [savedArticles, setSavedArticles] = useState([]);
   // const [token, setToken] = useState(null);
 
-  const mockSavedArticles = [
-    {
-      title: "Test Article 1",
-      image: "https://via.placeholder.com/400x272",
-      description: "This is a test description.",
-      source: "Test Source",
-      url: "https://example.com",
-      publishedAt: "2025-08-16T12:00:00Z",
-    },
-    {
-      title: "Test Article 2",
-      image: "https://via.placeholder.com/400x272",
-      description: "Another test description.",
-      source: "Another Source",
-      url: "https://example.com/2",
-      publishedAt: "2025-08-15T10:00:00Z",
-    },
-    {
-      title: "Test Article 1",
-      image: "https://via.placeholder.com/400x272",
-      description: "This is a test description.",
-      source: "Test Source",
-      url: "https://example.com",
-      publishedAt: "2025-08-16T12:00:00Z",
-    },
-    {
-      title: "Test Article 2",
-      image: "https://via.placeholder.com/400x272",
-      description: "Another test description.",
-      source: "Another Source",
-      url: "https://example.com/2",
-      publishedAt: "2025-08-15T10:00:00Z",
-    },
-  ];
+  // const mockSavedArticles = [
+  //   {
+  //     title: "Test Article 1",
+  //     image: "https://via.placeholder.com/400x272",
+  //     description: "This is a test description.",
+  //     source: "Test Source",
+  //     url: "https://example.com",
+  //     publishedAt: "2025-08-16T12:00:00Z",
+  //   },
+  //   {
+  //     title: "Test Article 2",
+  //     image: "https://via.placeholder.com/400x272",
+  //     description: "Another test description.",
+  //     source: "Another Source",
+  //     url: "https://example.com/2",
+  //     publishedAt: "2025-08-15T10:00:00Z",
+  //   },
+  //   {
+  //     title: "Test Article 1",
+  //     image: "https://via.placeholder.com/400x272",
+  //     description: "This is a test description.",
+  //     source: "Test Source",
+  //     url: "https://example.com",
+  //     publishedAt: "2025-08-16T12:00:00Z",
+  //   },
+  //   {
+  //     title: "Test Article 2",
+  //     image: "https://via.placeholder.com/400x272",
+  //     description: "Another test description.",
+  //     source: "Another Source",
+  //     url: "https://example.com/2",
+  //     publishedAt: "2025-08-15T10:00:00Z",
+  //   },
+  // ];
 
   const handleRegisterClick = () => {
     setActiveModal("register");
@@ -81,6 +81,27 @@ function App() {
 
   const onClose = () => {
     setActiveModal("");
+  };
+
+  const handleSaveArticle = (article) => {
+    if (!isLoggedIn) {
+      return;
+    }
+    saveArticle(article)
+      .then((savedArticle) => {
+        setSavedArticles((prev) => [...prev, savedArticle]);
+      })
+      .catch(console.error);
+  };
+
+  const handleDeleteArticle = (articleId) => {
+    deleteArticle(articleId)
+      .then(() => {
+        setSavedArticles((prev) =>
+          prev.filter((item) => item._id !== articleId)
+        );
+      })
+      .catch(console.error);
   };
 
   const handleLoginModalSubmit = (email, password) => {
@@ -165,6 +186,8 @@ function App() {
           console.error(err);
         });
     }
+    // Add this to load example saved articles on mount
+    getItems().then((items) => setSavedArticles(items));
   }, []);
 
   return (
@@ -192,6 +215,10 @@ function App() {
                     hasSearched={hasSearched}
                     isLoading={isLoading}
                     error={error}
+                    isLoggedIn={isLoggedIn}
+                    savedArticles={savedArticles}
+                    onSaveArticle={handleSaveArticle}
+                    onDeleteArticle={handleDeleteArticle}
                   />
                 </>
               }
@@ -201,16 +228,19 @@ function App() {
               element={
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <SavedNews
+                    articles={savedArticles}
+                    isLoading={isLoading}
+                    error={error}
                     isLoggedIn={true}
                     userName={userName}
+                    onSignIn={handleSignIn}
                     onSignOut={handleSignOut}
                     onLoginClick={handleLoginClick}
                     onRegisterClick={handleRegisterClick}
-                    articles={mockSavedArticles}
+                    onDeleteArticle={handleDeleteArticle}
+                    // articles={mockSavedArticles}
                     // visibleCount={visibleCount}
                     // onShowMoreArticles={onShowMoreArticles}
-                    isLoading={isLoading}
-                    error={error}
                   />
                 </ProtectedRoute>
               }

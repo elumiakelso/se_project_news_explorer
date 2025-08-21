@@ -13,7 +13,8 @@ function SavedNews({
   onSignIn,
   onSignOut,
   onLoginClick,
-  onRegisterClick
+  onRegisterClick,
+  onDeleteArticle
 }) {
   return (
     <>
@@ -49,6 +50,8 @@ function SavedNews({
           isLoading={isLoading}
           error={error}
           isSavedNews={true}
+          isLoggedIn={isLoggedIn}
+          onDeleteArticle={onDeleteArticle}
         />
     </>
   );

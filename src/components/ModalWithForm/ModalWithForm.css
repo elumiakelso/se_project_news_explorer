@@ -43,8 +43,8 @@
 } */
 
 .modal__content {
-  max-width: 430px;
-  height: 380px;
+  /* max-width: 430px;
+  height: 380px; */
   box-sizing: border-box;
   width: 100%;
   background-color: #fff;
@@ -62,12 +62,12 @@
 
 .modal__content_type_register {
   max-width: 430px;
-  height: 456px;
+  /* height: 458px; */
 }
 
 .modal__content_type_login {
   max-width: 430px;
-  height: 380px;
+  /* height: 380px; */
 }
 
 /* .modal__content_type_edit-profile {
@@ -227,6 +227,25 @@
 
 .modal__submit:disabled {
   background-color: #E6E8EB;
+}
+
+.modal__alt-action-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  /* width: 100%; */
+}
+
+.modal__alt-action-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+  color: #000000;
+  padding: 0;
+  margin: 0;
 }
 
 .modal__alt-action-button {

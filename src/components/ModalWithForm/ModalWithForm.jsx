@@ -31,22 +31,26 @@ function ModalWithForm({
         <form onSubmit={onSubmit} className="modal__form">
           {children}
           <div className="modal__button-container">
-            <button
-              type="submit"
-              className={`modal__submit ${
-                submitButtonClassName ? submitButtonClassName : ""
-              }`}
-            >
-              {buttonText}
-            </button>
-            <span>or </span>
-            <button
-              type="button"
-              className="modal__alt-action-button"
-              onClick={onAltAction}
-            >
-              {formAltActionNote}
-            </button>
+            <div>
+              <button
+                type="submit"
+                className={`modal__submit ${
+                  submitButtonClassName ? submitButtonClassName : ""
+                }`}
+              >
+                {buttonText}
+              </button>
+            </div>
+            <div className="modal__alt-action-row">
+              <span className="modal__alt-action-text">or </span>
+              <button
+                type="button"
+                className="modal__alt-action-button"
+                onClick={onAltAction}
+              >
+                {formAltActionNote}
+              </button>
+            </div>
           </div>
         </form>
       </div>
