@@ -37,48 +37,27 @@
   right: -41px;
 }
 
-/* .modal__close-button_type_image {
-  background: transparent url("../../assets/item-modal-close-icon.svg") center
-    no-repeat;
-} */
-
 .modal__content {
-  /* max-width: 430px;
-  height: 380px; */
   box-sizing: border-box;
   width: 100%;
   background-color: #fff;
-  /* border: 1px solid rgba(0, 0, 0, 0.3); */
   border-radius: 16px;
   position: relative;
   padding: 34px 36px 28px;
 }
 
-/* .modal__content_type_image {
-  max-width: 498px;
-  height: 610px;
-  padding: 0;
-} */
-
 .modal__content_type_register {
   max-width: 430px;
-  /* height: 458px; */
 }
 
 .modal__content_type_login {
   max-width: 430px;
-  /* height: 380px; */
 }
 
 .modal__content_type_register_confirmation {
   max-width: 430px;
   padding: 43px 36px 51px;
 }
-
-/* .modal__content_type_edit-profile {
-  max-width: 496px;
-  height: 304px;
-} */
 
 .modal__form {
   display: flex;
@@ -133,68 +112,6 @@
   outline-offset: 2px;
 }
 
-/* .modal__radio-group {
-  display: flex;
-  flex-direction: column;
-  border: none;
-  padding: 0;
-}
-
-.modal__legend {
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  margin: 0 0 12px;
-}
-
-.modal__label_type_radio {
-  color: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  margin: 0 0 8px;
-}
-
-.modal__label_type_radio:last-of-type {
-  margin: 0;
-}
-
-.modal__radio_input[type="radio"] {
-  -webkit-appearance: none;
-  appearance: none;
-  background: #fff;
-  width: 16px;
-  height: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  outline: none;
-  cursor: pointer;
-  position: relative;
-  vertical-align: text-top;
-  margin: 0 8px 0 0;
-}
-
-.modal__radio_input[type="radio"]:checked {
-  background-color: #fff;
-  border: 1px solid #000;
-}
-
-.modal__radio_input[type="radio"]:checked::before {
-  content: "";
-  display: block;
-  width: 10px;
-  height: 10px;
-  background-color: #000;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.modal__label_type_radio:has(input[type="radio"]:checked) {
-  color: #000;
-} */
-
 .modal__button-container {
   display: flex;
   flex-direction: column;
@@ -215,11 +132,6 @@
   color: #B6BCBF;
   padding: 8px 16px;
 }
-/*
-.modal__submit_type_edit-profile {
-  width: 128px;
-  height: 36px;
-} */
 
 .modal__submit:hover {
   background-color: #2F71E5;

@@ -1,12 +1,18 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-
 import "./Header.css";
 import Navigation from "../Navigation/Navigation.jsx";
 import SearchForm from "../SearchForm/SearchForm.jsx";
 
-function Header({ onSearch, isLoggedIn, userName, onSignIn, onSignOut, onLoginClick, onRegisterClick, isMobileMenuOpened, toggleMobileMenu }) {
-  const location = useLocation();
+function Header({
+  onSearch,
+  isLoggedIn,
+  userName,
+  onSignIn,
+  onSignOut,
+  onLoginClick,
+  onRegisterClick,
+  isMobileMenuOpened,
+  toggleMobileMenu,
+}) {
 
   return (
     <header className="header">
@@ -20,16 +26,16 @@ function Header({ onSearch, isLoggedIn, userName, onSignIn, onSignOut, onLoginCl
         isMobileMenuOpened={isMobileMenuOpened}
         toggleMobileMenu={toggleMobileMenu}
       />
-        <div className="header__content">
-          <div className="header__container">
-            <h1 className="header__title">What's going on in the world?</h1>
-            <p className="header__subtitle">
-              Find the latest news on any topic and save them in your personal
-              account.
-            </p>
-          </div>
-          <SearchForm onSearch={onSearch} />
+      <div className="header__content">
+        <div className="header__container">
+          <h1 className="header__title">What's going on in the world?</h1>
+          <p className="header__subtitle">
+            Find the latest news on any topic and save them in your personal
+            account.
+          </p>
         </div>
+        <SearchForm onSearch={onSearch} />
+      </div>
     </header>
   );
 }

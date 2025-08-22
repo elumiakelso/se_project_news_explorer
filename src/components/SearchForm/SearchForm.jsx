@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import './SearchForm.css';
+import { useState } from "react";
+import "./SearchForm.css";
 
 function SearchForm({ onSearch }) {
-  const [searchValue, setSearchValue] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [searchValue, setSearchValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (evt) => {
     setSearchValue(evt.target.value);
@@ -22,8 +22,10 @@ function SearchForm({ onSearch }) {
   };
 
   return (
-  <form className="search-form" role="search" onSubmit={handleSubmit}>
-      <label htmlFor="news-search" className="search-form__label">Search news</label>
+    <form className="search-form" role="search" onSubmit={handleSubmit}>
+      <label htmlFor="news-search" className="search-form__label">
+        Search news
+      </label>
       <input
         id="news-search"
         name="news-search"
@@ -33,7 +35,9 @@ function SearchForm({ onSearch }) {
         value={searchValue}
         onChange={handleInputChange}
       />
-      <button type="submit" className="search-form__button">Search</button>
+      <button type="submit" className="search-form__button">
+        Search
+      </button>
     </form>
   );
 }

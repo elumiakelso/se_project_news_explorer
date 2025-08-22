@@ -24,20 +24,6 @@ function LoginModal({ isOpen, onClose, onLoginModalSubmit, onAltAction }) {
     onLoginModalSubmit({ email, password });
   };
 
-//   useEffect(() => {
-//   function handleEscape(evt) {
-//     if ((evt.key === "Escape" || evt.keyCode === 27) && isOpen) {
-//       onClose();
-//     }
-//   }
-//   if (isOpen) {
-//     document.addEventListener("keydown", handleEscape);
-//   }
-//   return () => {
-//     document.removeEventListener("keydown", handleEscape);
-//   };
-// }, [isOpen, onClose]);
-
   return (
     <ModalWithForm
       title="Sign in"

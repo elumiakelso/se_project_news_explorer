@@ -4,8 +4,6 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 
 function SavedNews({
   articles,
-  // visibleCount,
-  // onShowMoreArticles,
   isLoading,
   error,
   isLoggedIn,
@@ -49,8 +47,6 @@ function SavedNews({
       </header>
         <NewsCardList
           articles={articles}
-          // visibleCount={visibleCount}
-          // onShowMoreArticles={onShowMoreArticles}
           isLoading={isLoading}
           error={error}
           isSavedNews={true}

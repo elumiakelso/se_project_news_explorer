@@ -1,10 +1,19 @@
-.nav__drawer .nav__close-btn {
+.nav__drawer .nav__button,
+.nav__drawer .nav__button-icon,
+.nav__drawer-header .nav__logo-link,
+.nav__item,
+.nav__logo-link,
+.nav__button-icon {
+  color: #fff;
+}
+
+.nav__drawer .nav__close-button {
   width: 24px;
   height: 24px;
   padding: 0;
 }
 
-.nav__drawer .nav__close-btn {
+.nav__drawer .nav__close-button {
   color: #fff !important;
 }
 
@@ -147,7 +156,7 @@
   color: #fff;
 }
 
-.nav__menu-btn {
+.nav__menu-button {
   display: none;
   width: 24px;
   height: 24px;
@@ -174,6 +183,7 @@
 .nav__links--desktop {
   display: flex;
 }
+
 .nav__drawer-list {
   display: none;
 }
@@ -188,30 +198,21 @@
     height: 66px;
     padding: 0 40px;
   }
-
   .nav__links {
     gap: 16px;
   }
-
   .nav__item {
     font-size: 16px;
     margin: 0;
   }
-
   .nav__button {
     font-size: 16px;
     height: 40px;
     padding: 8px 12px;
   }
-
   .nav__button-icon {
     margin-left: 13px;
   }
-}
-
-.nav__drawer--open,
-.nav--saved-news .nav__drawer--open {
-  display: flex !important;
 }
 
 @media screen and (max-width: 480px) {
@@ -220,11 +221,9 @@
     height: 56px;
     padding: 0 16px;
   }
-
   .nav__logo-link {
     font-size: 16px;
   }
-
   .nav__button {
     width: 100%;
     height: 56px;
@@ -232,59 +231,53 @@
     padding: 16px 0;
     font-size: 18px;
   }
-
-  .nav__menu-btn {
+  .nav__menu-button {
     display: block;
   }
-
   .nav__links--desktop {
     display: none;
   }
-
   .nav__drawer {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: #1A1B22;
+    background: #1a1b22;
     z-index: 100;
     flex-direction: column;
     align-items: flex-start;
     padding: 0;
     overflow-y: auto;
   }
-
-  /* removed duplicate .nav__drawer--open rules, only global override remains */
-
   .nav__drawer-header {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #1A1B22;
+    background: #1a1b22;
     height: 56px;
     padding: 0 16px;
     position: sticky;
     top: 0;
     z-index: 101;
   }
-
-
-.nav__drawer-list {
-  display: none;
-  flex-direction: column;
-  width: 100%;
-  margin: 0;
-  padding: 16px 16px 0;
-  list-style: none;
-}
-
-.nav__drawer--open .nav__drawer-list,
-.nav--saved-news .nav__drawer--open .nav__drawer-list {
-  display: flex !important;
-}
-
+  .nav__drawer-list {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 16px 16px 0;
+    list-style: none;
+  }
+  .nav__drawer--open .nav__drawer-list,
+  .nav--saved-news .nav__drawer--open .nav__drawer-list {
+    display: flex !important;
+  }
+  .nav__drawer--open,
+  .nav--saved-news .nav__drawer--open {
+    display: flex !important;
+  }
   .nav__drawer-item {
     font-family: "Roboto", Arial, sans-serif;
     font-weight: 500;
@@ -296,8 +289,7 @@
     /* width: 100%;
     box-sizing: border-box; */
   }
-
-  .nav__close-btn {
+  .nav__close-button {
     display: block;
     position: absolute;
     right: 16px;
@@ -305,24 +297,13 @@
     border: none;
     cursor: pointer;
   }
-
   .nav__overlay {
     position: fixed;
-    top: 230px; /* match the height of .nav__drawer */
+    top: 230px;
     left: 0;
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.3);
     z-index: 99;
   }
-/*
-  .nav__overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 99;
-  } */
 }

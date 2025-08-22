@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom"; // Hash Router for GH pages, use Browser Router later
 
 import "./App.css";
 import Header from "../Header/Header.jsx";
@@ -126,7 +126,6 @@ function App() {
         throw new Error("No token received");
       })
       .then((userData) => {
-        // setCurrentUser(userData);
         setUserName(userData.data.name);
         onClose();
       })
@@ -194,19 +193,18 @@ function App() {
         .checkToken(jwt)
         .then((userData) => {
           setIsLoggedIn(true);
-          // setCurrentUser(userData);
           setUserName(userData.data.name);
         })
         .catch((err) => {
           console.error(err);
         });
     }
-    // Add this to load example saved articles on mount
+    // Loads example saved articles on mount
     getItems().then((items) => setSavedArticles(items));
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="page">
         <div className="page__content">
           <Routes>
@@ -282,7 +280,7 @@ function App() {
           onRegisterConfirmation={handleRegisterConfirmation}
         />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

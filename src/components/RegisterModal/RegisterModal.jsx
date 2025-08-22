@@ -2,10 +2,15 @@ import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 
-function RegisterModal({ isOpen, onClose, onRegisterModalSubmit, onAltAction }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
+function RegisterModal({
+  isOpen,
+  onClose,
+  onRegisterModalSubmit,
+  onAltAction,
+}) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     setEmail("");

@@ -16,14 +16,20 @@ function NewsCardList({
   onDeleteArticle,
   savedArticles = [],
 }) {
+  const displayArticles = isSavedNews
+    ? articles
+    : articles.slice(0, visibleCount);
 
-  const displayArticles = isSavedNews ? articles : articles.slice(0, visibleCount);
-
-  const isArticleSaved = (article) => savedArticles.some(saved => saved.url === article.url);
+  const isArticleSaved = (article) =>
+    savedArticles.some((saved) => saved.url === article.url);
 
   return (
     <section className="news-card-list">
-      <div className={`news-card-list__container ${isSavedNews ? "news-card-list__container--saved-news" : ""}`}>
+      <div
+        className={`news-card-list__container ${
+          isSavedNews ? "news-card-list__container--saved-news" : ""
+        }`}
+      >
         {isLoading && <Preloader />}
         {!isLoading &&
           error &&
@@ -65,7 +71,9 @@ function NewsCardList({
                   key={index}
                   date={article.publishedAt}
                   title={article.title}
-                  image={article.imageUrl || article.urlToImage || article.image}
+                  image={
+                    article.imageUrl || article.urlToImage || article.image
+                  }
                   description={article.description}
                   source={article.source?.name || article.source}
                   url={article.url}

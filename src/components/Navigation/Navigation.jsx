@@ -25,7 +25,7 @@ function Navigation({
           NewsExplorer
         </Link>
         <button
-          className="nav__menu-btn"
+          className="nav__menu-button"
           onClick={toggleMobileMenu}
           aria-label="Open menu"
         >
@@ -82,7 +82,7 @@ function Navigation({
             NewsExplorer
           </Link>
           <button
-            className="nav__close-btn"
+            className="nav__close-button"
             onClick={toggleMobileMenu}
             aria-label="Close menu"
           >
@@ -142,7 +142,7 @@ function Navigation({
         </ul>
         {/* Close button (visible in mobile when menu is open) */}
         <button
-          className="nav__close-btn"
+          className="nav__close-button"
           onClick={toggleMobileMenu}
           aria-label="Close menu"
         >
