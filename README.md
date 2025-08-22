@@ -1,5 +1,12 @@
-# NewsExplorer
+## Deployed Site
 
-NewsExplorer is a responsive React application for searching, viewing, and saving news articles.  
-It features a search bar, dynamic results with “Show More” functionality, and a saved news section.  
-The project is styled to match the provided Figma design and includes basic routing and modal components.
+[View the live site on GitHub Pages](https://elumiakelso.github.io/se_project_news_explorer/)
+
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
