@@ -14,6 +14,7 @@ import {
 } from "../../utils/api.js";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import RegisterModal from "./../RegisterModal/RegisterModal";
+import RegisterConfirmationModal from "../RegisterConfirmationModal/RegisterConfirmationModal.jsx";
 import * as auth from "../../utils/auth.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
@@ -28,7 +29,10 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState(null);
   const [activeModal, setActiveModal] = useState(null);
+  const [isRegisterConfirmationOpen, setIsRegisterConfirmationOpen] =
+    useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
+
   // const [token, setToken] = useState(null);
 
   // const mockSavedArticles = [
@@ -81,6 +85,7 @@ function App() {
 
   const onClose = () => {
     setActiveModal("");
+    setIsRegisterConfirmationOpen(false);
   };
 
   const handleSaveArticle = (article) => {
@@ -129,12 +134,17 @@ function App() {
     auth
       .register(email, password, userName)
       .then((res) => {
-        // Optionally set user state or show a success message
         onClose();
+        setIsRegisterConfirmationOpen(true);
       })
       .catch((err) => {
         console.error(err);
       });
+  };
+
+  const handleRegisterConfirmation = () => {
+    setIsRegisterConfirmationOpen(false);
+    setActiveModal("login");
   };
 
   const handleSignOut = () => {
@@ -259,6 +269,11 @@ function App() {
           onClose={onClose}
           onRegisterModalSubmit={handleRegisterModalSubmit}
           onAltAction={handleLoginClick}
+        />
+        <RegisterConfirmationModal
+          isOpen={isRegisterConfirmationOpen}
+          onClose={onClose}
+          onRegisterConfirmation={handleRegisterConfirmation}
         />
       </div>
     </BrowserRouter>

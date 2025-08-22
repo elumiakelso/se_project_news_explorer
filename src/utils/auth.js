@@ -13,3 +13,10 @@ export const checkToken = (token) => {
     });
   });
 };
+
+export const register = (email, password, userName) => {
+  // Pretend we did a fetch request that registered the user
+  return new Promise((resolve, reject) => {
+    resolve({ message: "User registered successfully", userName });
+  });
+};

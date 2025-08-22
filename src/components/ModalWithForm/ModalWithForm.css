@@ -70,6 +70,11 @@
   /* height: 380px; */
 }
 
+.modal__content_type_register_confirmation {
+  max-width: 430px;
+  padding: 43px 36px 51px;
+}
+
 /* .modal__content_type_edit-profile {
   max-width: 496px;
   height: 304px;
@@ -264,4 +269,8 @@
   color: #2F71E5;
   cursor: pointer;
   transition: linear 0.1s;
+}
+
+.modal__content_type_register_confirmation .modal__alt-action-row {
+  justify-content: flex-start;
 }
