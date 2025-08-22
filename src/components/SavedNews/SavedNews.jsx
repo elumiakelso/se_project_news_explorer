@@ -14,7 +14,9 @@ function SavedNews({
   onSignOut,
   onLoginClick,
   onRegisterClick,
-  onDeleteArticle
+  onDeleteArticle,
+  isMobileMenuOpened,
+  toggleMobileMenu,
 }) {
   return (
     <>
@@ -26,6 +28,8 @@ function SavedNews({
         onLoginClick={onLoginClick}
         onRegisterClick={onRegisterClick}
         isSavedNews={true}
+        isMobileMenuOpened={isMobileMenuOpened}
+        toggleMobileMenu={toggleMobileMenu}
       />
       <header className="saved-news__header">
         <div className="saved-news__header-container">

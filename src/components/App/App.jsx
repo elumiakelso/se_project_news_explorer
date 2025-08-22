@@ -32,6 +32,7 @@ function App() {
   const [isRegisterConfirmationOpen, setIsRegisterConfirmationOpen] =
     useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
+  const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
 
   // const [token, setToken] = useState(null);
 
@@ -86,6 +87,10 @@ function App() {
   const onClose = () => {
     setActiveModal("");
     setIsRegisterConfirmationOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpened(!isMobileMenuOpened);
   };
 
   const handleSaveArticle = (article) => {
@@ -217,6 +222,8 @@ function App() {
                     onSignOut={handleSignOut}
                     onLoginClick={handleLoginClick}
                     onRegisterClick={handleRegisterClick}
+                    isMobileMenuOpened={isMobileMenuOpened}
+                    toggleMobileMenu={toggleMobileMenu}
                   />
                   <Main
                     articles={articles}
@@ -248,9 +255,8 @@ function App() {
                     onLoginClick={handleLoginClick}
                     onRegisterClick={handleRegisterClick}
                     onDeleteArticle={handleDeleteArticle}
-                    // articles={mockSavedArticles}
-                    // visibleCount={visibleCount}
-                    // onShowMoreArticles={onShowMoreArticles}
+                    isMobileMenuOpened={isMobileMenuOpened}
+                    toggleMobileMenu={toggleMobileMenu}
                   />
                 </ProtectedRoute>
               }

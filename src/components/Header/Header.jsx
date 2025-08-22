@@ -1,10 +1,11 @@
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import "./Header.css";
 import Navigation from "../Navigation/Navigation.jsx";
 import SearchForm from "../SearchForm/SearchForm.jsx";
 
-function Header({ onSearch, isLoggedIn, userName, onSignIn, onSignOut, onLoginClick, onRegisterClick }) {
+function Header({ onSearch, isLoggedIn, userName, onSignIn, onSignOut, onLoginClick, onRegisterClick, isMobileMenuOpened, toggleMobileMenu }) {
   const location = useLocation();
 
   return (
@@ -16,6 +17,8 @@ function Header({ onSearch, isLoggedIn, userName, onSignIn, onSignOut, onLoginCl
         onSignOut={onSignOut}
         onLoginClick={onLoginClick}
         onRegisterClick={onRegisterClick}
+        isMobileMenuOpened={isMobileMenuOpened}
+        toggleMobileMenu={toggleMobileMenu}
       />
         <div className="header__content">
           <div className="header__container">
