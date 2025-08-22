@@ -1,3 +1,7 @@
+## Deployed Site
+
+[View the live site on GitHub Pages](https://elumiakelso.github.io/se_project_news_explorer/)
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
